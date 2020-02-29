@@ -1,0 +1,17 @@
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+  (async ()=>{
+    // axios.defaults.baseURL = 'http://localhost:4000'
+    axios.defaults.withCredentials = true
+    const res = await axios.get('/api/users',{headers :{
+     'X-Token':'123'
+    }})
+    //const res = await axios.get('/api/users')
+    document.write(`Response:${JSON.stringify(res.data)}`)
+
+  // //  埋点
+  //   const img = new Image()
+  //   img.src = '/api/users?button=123'
+  })()
+</script>
+
