@@ -2,63 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1c40b3d5-daad-4ad0-b7bf-f3d39b62fb3f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/03/bodyparser/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/03/bodyparser/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/03/http/api.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/03/http/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/03/http/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/03/http/proxy.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/03/upload/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/03/upload/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/04-mysql/mysql/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/04-mysql/sequelize/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/04-mysql/shop/backend/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/04-mysql/shop/backend/models/cart-item.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/04-mysql/shop/backend/models/cart.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/04-mysql/shop/backend/models/order-item.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/04-mysql/shop/backend/models/order.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/04-mysql/shop/backend/models/product.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/04-mysql/shop/backend/models/user.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/04-mysql/shop/backend/util/conf.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/04-mysql/shop/backend/util/database.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/04-mysql/shop/backend/util/path.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/04-mysql/shop/frontend/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/04-mysql/shop/frontend/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/04-mysql/shop/frontend/babel.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/04-mysql/shop/frontend/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/04-mysql/shop/frontend/public/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/04-mysql/shop/frontend/public/img/icons/android-chrome-192x192.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/04-mysql/shop/frontend/public/img/icons/android-chrome-512x512.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/04-mysql/shop/frontend/public/img/icons/apple-touch-icon-120x120.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/04-mysql/shop/frontend/public/img/icons/apple-touch-icon-152x152.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/04-mysql/shop/frontend/public/img/icons/apple-touch-icon-180x180.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/04-mysql/shop/frontend/public/img/icons/apple-touch-icon-60x60.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/04-mysql/shop/frontend/public/img/icons/apple-touch-icon-76x76.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/04-mysql/shop/frontend/public/img/icons/apple-touch-icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/04-mysql/shop/frontend/public/img/icons/favicon-16x16.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/04-mysql/shop/frontend/public/img/icons/favicon-32x32.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/04-mysql/shop/frontend/public/img/icons/msapplication-icon-144x144.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/04-mysql/shop/frontend/public/img/icons/mstile-150x150.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/04-mysql/shop/frontend/public/img/icons/safari-pinned-tab.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/04-mysql/shop/frontend/public/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/04-mysql/shop/frontend/public/manifest.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/04-mysql/shop/frontend/public/robots.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/04-mysql/shop/frontend/src/App.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/04-mysql/shop/frontend/src/assets/logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/04-mysql/shop/frontend/src/element-variables.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/04-mysql/shop/frontend/src/main.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/04-mysql/shop/frontend/src/plugins/element.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/04-mysql/shop/frontend/src/registerServiceWorker.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/04-mysql/shop/frontend/src/router.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/04-mysql/shop/frontend/src/utils/interceptor.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/04-mysql/shop/frontend/src/views/Cart.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/04-mysql/shop/frontend/src/views/Orders.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/04-mysql/shop/frontend/src/views/Shop.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/04-mysql/shop/frontend/vue.config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/04-mysql/sequelize/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/04-mysql/sequelize/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/note/04-mysql.md" beforeDir="false" afterPath="$PROJECT_DIR$/note/04-mysql.md" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -73,20 +19,20 @@
     <session id="-1552090081">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="5" />
+          <entry key="project.closed" value="7" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.18" value="1" />
-          <entry key="project.open.time.19" value="2" />
+          <entry key="project.open.time.19" value="3" />
           <entry key="project.open.time.22" value="1" />
           <entry key="project.open.time.24" value="1" />
           <entry key="project.open.time.3" value="1" />
-          <entry key="project.opened" value="7" />
+          <entry key="project.opened" value="8" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="html" value="11" />
-          <entry key="js" value="85" />
+          <entry key="js" value="86" />
           <entry key="json" value="7" />
           <entry key="kkb" value="2" />
           <entry key="kkb-init" value="3" />
@@ -101,7 +47,7 @@
           <entry key="HTML" value="11" />
           <entry key="Image" value="1" />
           <entry key="JSON" value="7" />
-          <entry key="JavaScript" value="85" />
+          <entry key="JavaScript" value="86" />
           <entry key="PLAIN_TEXT" value="9" />
           <entry key="Vue.js" value="4" />
         </counts>
@@ -109,7 +55,7 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="html" value="380" />
-          <entry key="js" value="6871" />
+          <entry key="js" value="7279" />
           <entry key="json" value="25" />
           <entry key="kkb" value="38" />
           <entry key="kkb-init" value="114" />
@@ -121,7 +67,7 @@
         <counts>
           <entry key="HTML" value="380" />
           <entry key="JSON" value="25" />
-          <entry key="JavaScript" value="6871" />
+          <entry key="JavaScript" value="7279" />
           <entry key="PLAIN_TEXT" value="162" />
           <entry key="Vue.js" value="5" />
         </counts>
@@ -130,47 +76,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/04-mysql/sequelize/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="627">
-              <caret line="48" column="3" selection-start-line="48" selection-start-column="3" selection-end-line="48" selection-end-column="3" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/04-mysql/shop/backend/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="201">
-              <caret line="147" column="43" lean-forward="true" selection-start-line="147" selection-start-column="43" selection-end-line="147" selection-end-column="43" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://D:/04课持久化mysql（8月16号）/04/shop/backend/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="124" column="2" lean-forward="true" selection-start-line="51" selection-end-line="124" selection-end-column="2" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/04-mysql/shop/frontend/package.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="320">
-              <caret line="33" column="38" selection-start-line="33" selection-start-column="38" selection-end-line="33" selection-end-column="38" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/04-mysql/shop/backend/util/database.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
-              <caret line="12" selection-start-line="12" selection-end-line="12" />
+            <state relative-caret-position="1406">
+              <caret line="74" column="32" selection-start-line="74" selection-start-column="32" selection-end-line="74" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -226,10 +136,10 @@
         <option value="$PROJECT_DIR$/03/upload/index.js" />
         <option value="$PROJECT_DIR$/03/http/proxy.js" />
         <option value="$PROJECT_DIR$/04-mysql/mysql/index.js" />
-        <option value="$PROJECT_DIR$/04-mysql/sequelize/index.js" />
         <option value="$PROJECT_DIR$/04-mysql/shop/backend/util/conf.js" />
         <option value="D:/04课持久化mysql（8月16号）/04/shop/backend/index.js" />
         <option value="$PROJECT_DIR$/04-mysql/shop/backend/index.js" />
+        <option value="$PROJECT_DIR$/04-mysql/sequelize/index.js" />
       </list>
     </option>
   </component>
@@ -267,8 +177,8 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="983" />
-    <option name="y" value="18" />
+    <option name="x" value="705" />
+    <option name="y" value="20" />
     <option name="width" value="1255" />
     <option name="height" value="985" />
   </component>
@@ -294,29 +204,7 @@
               <item name="Node" type="b2602c69:ProjectViewProjectNode" />
               <item name="Node" type="462c0819:PsiDirectoryNode" />
               <item name="04-mysql" type="462c0819:PsiDirectoryNode" />
-              <item name="shop" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Node" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Node" type="462c0819:PsiDirectoryNode" />
-              <item name="04-mysql" type="462c0819:PsiDirectoryNode" />
-              <item name="shop" type="462c0819:PsiDirectoryNode" />
-              <item name="backend" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Node" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Node" type="462c0819:PsiDirectoryNode" />
-              <item name="04-mysql" type="462c0819:PsiDirectoryNode" />
-              <item name="shop" type="462c0819:PsiDirectoryNode" />
-              <item name="backend" type="462c0819:PsiDirectoryNode" />
-              <item name="util" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Node" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Node" type="462c0819:PsiDirectoryNode" />
-              <item name="04-mysql" type="462c0819:PsiDirectoryNode" />
-              <item name="shop" type="462c0819:PsiDirectoryNode" />
-              <item name="frontend" type="462c0819:PsiDirectoryNode" />
+              <item name="sequelize" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -408,12 +296,13 @@
       <workItem from="1582683040931" duration="13263000" />
       <workItem from="1582713585053" duration="1356000" />
       <workItem from="1582775714356" duration="738000" />
-      <workItem from="1582962244635" duration="15731000" />
+      <workItem from="1582962244635" duration="16086000" />
+      <workItem from="1583033732980" duration="2345000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="63500000" />
+    <option name="totallyTimeSpent" value="66200000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -425,7 +314,8 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="787" y="15" width="1004" height="788" extended-state="0" />
+    <frame x="564" y="16" width="1004" height="788" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4988662" weight="0.22417356" />
       <window_info id="Structure" order="1" sideWeight="0.5011338" side_tool="true" weight="0.21280992" />
@@ -739,22 +629,8 @@
     <entry file="file://$PROJECT_DIR$/04-mysql/shop/frontend/src/utils/interceptor.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/04-mysql/shop/backend/util/database.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/04-mysql/package.json">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/04-mysql/shop/frontend/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="33" column="38" selection-start-line="33" selection-start-column="38" selection-end-line="33" selection-end-column="38" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://D:/04课持久化mysql（8月16号）/04/mysql/sequelize2.js">
       <provider selected="true" editor-type-id="text-editor">
@@ -763,24 +639,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/04-mysql/sequelize/index.js">
+    <entry file="file://D:/04课持久化mysql（8月16号）/04/shop/backend/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="627">
-          <caret line="48" column="3" selection-start-line="48" selection-start-column="3" selection-end-line="48" selection-end-column="3" />
+        <state relative-caret-position="2356">
+          <caret line="124" column="2" selection-start-line="51" selection-end-line="124" selection-end-column="2" />
         </state>
       </provider>
     </entry>
-    <entry file="file://D:/04课持久化mysql（8月16号）/04/shop/backend/index.js">
+    <entry file="file://$PROJECT_DIR$/04-mysql/shop/frontend/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="124" column="2" lean-forward="true" selection-start-line="51" selection-end-line="124" selection-end-column="2" />
+        <state relative-caret-position="627">
+          <caret line="33" column="38" selection-start-line="33" selection-start-column="38" selection-end-line="33" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/04-mysql/shop/backend/util/database.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/04-mysql/shop/backend/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
-          <caret line="147" column="43" lean-forward="true" selection-start-line="147" selection-start-column="43" selection-end-line="147" selection-end-column="43" />
+        <state relative-caret-position="190">
+          <caret line="10" column="38" lean-forward="true" selection-start-line="10" selection-start-column="38" selection-end-line="10" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/04-mysql/sequelize/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1406">
+          <caret line="74" column="32" selection-start-line="74" selection-start-column="32" selection-end-line="74" selection-end-column="32" />
         </state>
       </provider>
     </entry>

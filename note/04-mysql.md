@@ -144,7 +144,13 @@ npm i sequelize mysql2 -S
 // console.log('create:',ret)
 ```
 
+当创建了各个数据库的依赖之后，直接通过如
+
+user.createProduct(..)的方法来创建即可
+
 #### 更新
+
+1. 方式一
 
 ```
 // 更新操作
@@ -155,6 +161,18 @@ ret = await Fruit.update({price:4},{
 })
 ```
 
+  2.方式二
+
+```
+ Fruit.findById(1).then(fruit=>{
+    // 现在通过id查询不支持了，用findByPk了
+    fruit.price = 4
+    fruit.save().then(()=>console.log....)
+ })
+```
+
+
+
 #### 查询
 
 ```
@@ -164,11 +182,74 @@ ret = await Fruit.findAll()
 console.log('find:',JSON.stringify(ret,'','\t'))
 
  // 条件查询
+ 1.通过查询操作符查询全部
 const Op = Sequelize.Op
 ret = await  Fruit.findAll({
     // 长度在2-4之间
     where:{price:{[Op.lt]:4,[Op.gt]:2}}
   })
+  
+ 2.通过属性查询一个
+ Fruit.findOne({where:{name:"香蕉"}}).then(fruit=>{
+   // fruit是首个匹配项，若没有则为null，用get方法来获取数据
+    console.log(fruit.get())
+ })
+ 
+ 3.指定查询字段
+ Fruit.findOne({attributes:['name']}).then(fruit=>{
+//fruit是首个匹配项，若没有则为null
+   console.log(fruit.get());
+});
+
+
+ 4.获取数据和总条数
+Fruit.findAndCountAll().then(result=>{
+      console.log(result.count);
+      console.log(result.rows.length);
+   });
+
+```
+
+**当创建了数据库依赖时，可以直接通过如下语句获取**
+
+```
+const products = await cart.getProducts({
+  where: {
+    id: prodId
+  }
+});
+```
+
+#### 删除
+
+1. 方式一
+
+```
+Fruit.findOne({where:{id:1}}).then(r=>r.destroy());
+```
+
+​    2.方式二
+
+```
+Fruit.destroy({where:{id:1}}).then(r=>console.log(r));
+```
+
+#### 校验
+
+可以通过校验功能验证模型字段格式、内容，校验会在、和时自动运行
+
+```
+price:{
+    validate:{
+      isFloat:{msg:"价格字段请输入数字"},
+      min:{args:[0],msg:"价格字段必须大于0"}
+    }
+},
+stock:{
+    validate:{
+    isNumeric:{msg:"库存字段请输入数字"}
+    }
+}
 ```
 
 
