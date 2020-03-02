@@ -23,18 +23,18 @@ conn.once("open", async () => {
     });
     console.log("插入数据:", r);
 
-    // 5.查询，find返回Query，它实现了then和catch，可以当Promise使用
-    // 如果需要返回Promise，调用其exec()
-    // r = await Model.find({ name: "苹果" });
-    // console.log("查询结果:", r);
+    //5.查询，find返回Query，它实现了then和catch，可以当Promise使用
+    //如果需要返回Promise，调用其exec()
+    r = await Model.find({ name: "苹果" });
+    console.log("查询结果:", r);
 
-    // // 6.更新，updateOne返回Query
-    // r = await Model.updateOne({ name: "苹果" }, { $set: { name: '芒果' } });
-    // console.log("更新结果：", r);
+    // 6.更新，updateOne返回Query
+    r = await Model.updateOne({ name: "苹果" }, { $set: { name: '芒果' } });
+    console.log("更新结果：", r);
 
-    // // 7.删除，deleteOne返回Query
-    // r = await Model.deleteOne({ name: "苹果" });
-    // console.log("删除结果：", r);
+    // 7.删除，deleteOne返回Query
+    r = await Model.deleteOne({ name: "苹果" });
+    console.log("删除结果：", r);
 
     const blogSchema = mongoose.Schema({
       title: { type: String, required: [true, '标题为必填项'] }, // 定义校验规则
@@ -91,6 +91,6 @@ conn.once("open", async () => {
     console.log('blog留言数:',r.commentsCount)
   }catch(e){
     console.log('e',e.message)
-  }
+   }
 
 });
