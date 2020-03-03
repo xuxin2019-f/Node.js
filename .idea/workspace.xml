@@ -2,14 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1c40b3d5-daad-4ad0-b7bf-f3d39b62fb3f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/05-mongodb/restful/conf.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/05-mongodb/restful/framework/api.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/05-mongodb/restful/framework/loader.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/05-mongodb/restful/framework/router.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/05-mongodb/restful/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/05-mongodb/restful/model/user.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/06/Token/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/06/Token/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/06/app.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/06/oauth-simple/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/06/oauth-simple/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/05-mongodb/mongoose/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/05-mongodb/mongoose/index.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -24,21 +22,24 @@
     <session id="-1552090081">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="9" />
+          <entry key="project.closed" value="13" />
           <entry key="project.open.time.1" value="1" />
+          <entry key="project.open.time.13" value="1" />
           <entry key="project.open.time.18" value="2" />
           <entry key="project.open.time.19" value="3" />
-          <entry key="project.open.time.22" value="1" />
+          <entry key="project.open.time.22" value="2" />
           <entry key="project.open.time.24" value="1" />
           <entry key="project.open.time.25" value="1" />
+          <entry key="project.open.time.26" value="1" />
           <entry key="project.open.time.3" value="1" />
-          <entry key="project.opened" value="10" />
+          <entry key="project.open.time.4" value="1" />
+          <entry key="project.opened" value="14" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="html" value="15" />
-          <entry key="js" value="115" />
+          <entry key="html" value="19" />
+          <entry key="js" value="121" />
           <entry key="json" value="7" />
           <entry key="kkb" value="2" />
           <entry key="kkb-init" value="3" />
@@ -50,10 +51,10 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="HTML" value="15" />
+          <entry key="HTML" value="19" />
           <entry key="Image" value="1" />
           <entry key="JSON" value="7" />
-          <entry key="JavaScript" value="115" />
+          <entry key="JavaScript" value="121" />
           <entry key="PLAIN_TEXT" value="9" />
           <entry key="Vue.js" value="4" />
         </counts>
@@ -61,7 +62,7 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="html" value="380" />
-          <entry key="js" value="9824" />
+          <entry key="js" value="10475" />
           <entry key="json" value="25" />
           <entry key="kkb" value="38" />
           <entry key="kkb-init" value="114" />
@@ -73,7 +74,7 @@
         <counts>
           <entry key="HTML" value="380" />
           <entry key="JSON" value="25" />
-          <entry key="JavaScript" value="9824" />
+          <entry key="JavaScript" value="10475" />
           <entry key="PLAIN_TEXT" value="162" />
           <entry key="Vue.js" value="5" />
         </counts>
@@ -83,64 +84,37 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/05-mongodb/restful/framework/router.js">
+        <entry file="file://$PROJECT_DIR$/06/Token/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
-              <caret line="9" column="42" lean-forward="true" selection-start-line="9" selection-start-column="42" selection-end-line="9" selection-end-column="42" />
+            <state relative-caret-position="760">
+              <caret line="40" column="5" selection-start-line="40" selection-start-column="5" selection-end-line="40" selection-end-column="5" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/05-mongodb/restful/model/user.js">
+        <entry file="file://D:/06课鉴权（8月22日）/06/token/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="114">
-              <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+            <state relative-caret-position="95">
+              <caret line="5" column="34" selection-start-line="5" selection-start-column="34" selection-end-line="5" selection-end-column="34" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/05-mongodb/restful/conf.js">
+        <entry file="file://$PROJECT_DIR$/06/Token/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="114">
-              <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+            <state relative-caret-position="57">
+              <caret line="36" column="10" selection-start-line="36" selection-start-column="10" selection-end-line="36" selection-end-column="10" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/05-mongodb/restful/index.js">
+        <entry file="file://$PROJECT_DIR$/06/oauth-simple/index.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="190">
-              <caret line="10" column="21" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://D:/05课持久化-mongodb（8月20号）/05/restful/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
-              <caret line="7" column="14" lean-forward="true" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/05-mongodb/restful/framework/loader.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
-              <caret line="13" column="9" lean-forward="true" selection-start-line="13" selection-start-column="9" selection-end-line="13" selection-end-column="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://D:/05课持久化-mongodb（8月20号）/05/restful/model/user.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="152">
-              <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+              <caret line="31" column="5" lean-forward="true" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -162,10 +136,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/01/api/index.html" />
-        <option value="$PROJECT_DIR$/01/api/http.js" />
-        <option value="$PROJECT_DIR$/01/vue-auto-router-cli/package.json" />
-        <option value="$PROJECT_DIR$/01/vue-auto-router-cli/bin/kkb" />
         <option value="$PROJECT_DIR$/01/vue-auto-router-cli/bin/kkb-init" />
         <option value="$PROJECT_DIR$/01/vue-auto-router-cli/test/src/views/Abc.vue" />
         <option value="$PROJECT_DIR$/01/vue-auto-router-cli/bin/kkb-refresh" />
@@ -213,6 +183,10 @@
         <option value="$PROJECT_DIR$/05-mongodb/restful/index.js" />
         <option value="D:/05课持久化-mongodb（8月20号）/05/restful/model/user.js" />
         <option value="$PROJECT_DIR$/05-mongodb/restful/model/user.js" />
+        <option value="$PROJECT_DIR$/06/app.js" />
+        <option value="$PROJECT_DIR$/06/Token/index.html" />
+        <option value="$PROJECT_DIR$/06/Token/index.js" />
+        <option value="$PROJECT_DIR$/06/oauth-simple/index.js" />
       </list>
     </option>
   </component>
@@ -236,6 +210,7 @@
     <handled-path value="$PROJECT_DIR$/04-mysql/node_modules" />
     <handled-path value="$PROJECT_DIR$/04-mysql/shop/frontend/node_modules" />
     <handled-path value="$PROJECT_DIR$/05-mongodb/node_modules" />
+    <handled-path value="$PROJECT_DIR$/06/node_modules" />
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
   <component name="NodePackageJsonFileManager">
@@ -248,13 +223,15 @@
       <path value="$PROJECT_DIR$/04-mysql/package.json" />
       <path value="$PROJECT_DIR$/04-mysql/shop/frontend/package.json" />
       <path value="$PROJECT_DIR$/05-mongodb/package.json" />
+      <path value="$PROJECT_DIR$/06/package.json" />
       <path value="$PROJECT_DIR$/package.json" />
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-38" />
+    <option name="x" value="526" />
+    <option name="y" value="45" />
     <option name="width" value="1255" />
-    <option name="height" value="988" />
+    <option name="height" value="980" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -272,13 +249,13 @@
             <path>
               <item name="Node" type="b2602c69:ProjectViewProjectNode" />
               <item name="Node" type="462c0819:PsiDirectoryNode" />
-              <item name="05-mongodb" type="462c0819:PsiDirectoryNode" />
+              <item name="06" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Node" type="b2602c69:ProjectViewProjectNode" />
               <item name="Node" type="462c0819:PsiDirectoryNode" />
-              <item name="05-mongodb" type="462c0819:PsiDirectoryNode" />
-              <item name="restful" type="462c0819:PsiDirectoryNode" />
+              <item name="06" type="462c0819:PsiDirectoryNode" />
+              <item name="oauth-simple" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -299,11 +276,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Node\06" />
+      <recent name="D:\Node\06\Token" />
       <recent name="D:\Node\05-mongodb" />
       <recent name="D:\Node\04-mysql\shop\backend\util" />
       <recent name="D:\Node\04-mysql\shop" />
-      <recent name="D:\Node\04-mysql\shop\util" />
-      <recent name="D:\Node\04-mysql\shop\models" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Node\04-mysql\shop\backend" />
@@ -374,11 +351,15 @@
       <workItem from="1583033732980" duration="2345000" />
       <workItem from="1583057914923" duration="8207000" />
       <workItem from="1583112960705" duration="10804000" />
+      <workItem from="1583130958313" duration="595000" />
+      <workItem from="1583213542940" duration="533000" />
+      <workItem from="1583214135084" duration="6251000" />
+      <workItem from="1583226153096" duration="1662000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="85211000" />
+    <option name="totallyTimeSpent" value="94252000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -390,10 +371,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-30" y="0" width="1004" height="790" extended-state="0" />
+    <frame x="421" y="36" width="1004" height="784" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4988662" visible="true" weight="0.22417356" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4988662" weight="0.22417356" />
       <window_info id="Structure" order="1" sideWeight="0.5011338" side_tool="true" weight="0.21280992" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -405,7 +386,7 @@
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32874617" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info anchor="bottom" id="Terminal" order="9" visible="true" weight="0.32267883" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" visible="true" weight="0.32565284" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -419,65 +400,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/03/bodyparser/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="6" column="27" lean-forward="true" selection-start-line="6" selection-start-column="27" selection-end-line="6" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/03/upload/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="6" column="23" lean-forward="true" selection-end-line="38" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/03/upload/0D3032681B3A011E86FCC9CD476E0B4C.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/03/upload/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="25" column="7" selection-start-line="25" selection-start-column="7" selection-end-line="25" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/03/upload/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="68" column="2" selection-start-line="68" selection-start-column="2" selection-end-line="68" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/03/upload/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="19" column="42" selection-start-line="19" selection-start-column="42" selection-end-line="19" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/03/http/proxy.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/03/http/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/03/http/api.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="28" selection-start-column="28" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://D:/04课持久化mysql（8月16号）/04/mysql/mysql2.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="49">
@@ -670,10 +592,43 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://D:/05课持久化-mongodb（8月20号）/05/restful/model/user.js">
+    <entry file="file://D:/05课持久化-mongodb（8月20号）/05/keystone/keystone.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+        <state relative-caret-position="-627" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/05-mongodb/restful/framework/api.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="148">
+          <caret line="25" column="18" lean-forward="true" selection-start-line="25" selection-start-column="18" selection-end-line="25" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/05-mongodb/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="29" column="22" selection-start-line="29" selection-start-column="22" selection-end-line="29" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/05-mongodb/restful/framework/router.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="9" column="42" selection-start-line="9" selection-start-column="42" selection-end-line="9" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/05-mongodb/restful/model/user.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/05-mongodb/restful/conf.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
         </state>
       </provider>
     </entry>
@@ -684,64 +639,87 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://D:/05课持久化-mongodb（8月20号）/05/keystone/keystone.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-627">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/05-mongodb/restful/conf.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/05-mongodb/restful/framework/loader.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
+        <state relative-caret-position="247">
           <caret line="13" column="9" lean-forward="true" selection-start-line="13" selection-start-column="9" selection-end-line="13" selection-end-column="9" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/05-mongodb/restful/framework/api.js">
+    <entry file="file://D:/05课持久化-mongodb（8月20号）/05/restful/model/user.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="148">
-          <caret line="25" column="18" lean-forward="true" selection-start-line="25" selection-start-column="18" selection-end-line="25" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/05-mongodb/restful/model/user.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/05-mongodb/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="29" column="22" selection-start-line="29" selection-start-column="22" selection-end-line="29" selection-end-column="22" />
-          <folding>
-            <element signature="n#style#0;n#el-table#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/05-mongodb/restful/framework/router.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="9" column="42" lean-forward="true" selection-start-line="9" selection-start-column="42" selection-end-line="9" selection-end-column="42" />
+        <state relative-caret-position="152">
+          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/05-mongodb/restful/index.js">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/06课鉴权（8月22日）/06/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="13" selection-start-line="13" selection-end-line="19" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/06/app.js">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
-          <caret line="10" column="21" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
+          <caret line="10" column="30" lean-forward="true" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/06课鉴权（8月22日）/06/token/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="7" column="18" lean-forward="true" selection-end-line="80" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/06/Token/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="760">
+          <caret line="40" column="5" selection-start-line="40" selection-start-column="5" selection-end-line="40" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/06课鉴权（8月22日）/06/token/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="5" column="34" selection-start-line="5" selection-start-column="34" selection-end-line="5" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/06课鉴权（8月22日）/06/oauth/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-694">
+          <caret line="10" column="48" lean-forward="true" selection-start-line="10" selection-start-column="48" selection-end-line="10" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/06/Token/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="36" column="10" selection-start-line="36" selection-start-column="10" selection-end-line="36" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/06/oauth-simple/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="6" column="16" lean-forward="true" selection-start-line="6" selection-start-column="16" selection-end-line="6" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/06/oauth-simple/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="31" column="5" lean-forward="true" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
         </state>
       </provider>
     </entry>
