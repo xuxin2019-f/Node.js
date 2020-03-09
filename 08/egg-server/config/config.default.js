@@ -34,7 +34,23 @@ module.exports = appInfo => {
     routerMap: true,
     enable: true,
   }
+  config.mongoose = {
+    url: 'mongodb://127.0.0.1:27017/egg_x',
+    options: {
+      // useMongoClient: true,
+      autoReconnect: true,
+      reconnectTries: Number.MAX_VALUE,
+      bufferMaxEntries: 0,
+    },
 
+  }
+  config.jwt = {
+    // 秘钥
+    secret: 'Great4-M',
+    enable: true, // default is false
+    // 表示只在/api开头的路由检查权限
+    match: /^\/api/, // optional
+  }
 
   // add your user config here
   const userConfig = {

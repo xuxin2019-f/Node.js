@@ -1,5 +1,7 @@
 # 1.创建项目
 
+**app下经典的三层结构是model层（数据层），service层（业务逻辑），controller层（接口门户）**，此外还有一些别的特定文件夹实现别的功能
+
 步骤见pdf
 
 # 2.创建Controller方法
@@ -291,4 +293,203 @@ async create(){
 >   ]
 >
 > }
+
+# 8.创建模型层
+
+## app文件夹下创建model文件夹
+
+新建user.js创建模型
+
+## 进入config/plugin.js配置插件
+
+```
+mongoose:{
+  enable:true,
+  package:'egg-mongoose',
+},
+```
+
+## 进入config/config.default.js中配置详细信息
+
+```
+config.mongoose = {
+  url: 'mongodb://127.0.0.1:27017/egg_x',
+  options: {
+    // useMongoClient: true,
+    autoReconnect: true,
+    reconnectTries: Number.MAX_VALUE,
+    bufferMaxEntries: 0,
+  },
+}
+```
+
+
+
+
+
+# 9添加service层（实现业务逻辑）
+
+npm install egg-bcrypt -s
+
+配置见pdf
+
+创建service文件夹，创建user.js编写业务逻辑
+
+**实现将哈希加密密码**
+
+```
+const Service = require('egg').Service
+
+class UserService extends  Service {
+  /**
+   * 创建用户
+   * @param {*}payload
+   *
+   */
+
+  async create(payload){
+    const {ctx} = this
+    // 生成一个哈希
+    payload.password = await this.ctx.genHash(payload.password)
+    return ctx.model.User.create(payload)
+  }
+}
+module.exports = UserService
+```
+
+在controller中调用
+
+```
+async create(){
+  const {ctx,service} = this
+  // 校验参数  egg会把contract中导出的所有东西放在ctx.rule下
+  ctx.validate(ctx.rule.createUserRequest)
+  //const res = {abc:123}
+
+  //组装参数
+  const payload = ctx.request.body || {}
+  const res = await service.user.create(payload)
+
+  // 设置应答内容
+  ctx.helper.success({ctx,res})
+}
+```
+
+在controller门户user.js和service逻辑user.js中完善剩余的代码，实现增删改查的具体操作
+
+
+
+# 10.利用生命周期初始化数据
+
+在此只是利用初始化数据来体验生命周期，还可以做别的事
+
+在根目录创建app.js配置，由于didReady这个时期，service及其他层已经准备好了，所以在此写初始化数据的逻辑
+
+```
+async didReady() {
+  // Worker is ready, can do some things
+  // don't need to block the app boot.
+  console.log('========Init Data=========')
+  const ctx = await this.app.createAnonymousContext();
+  await ctx.model.User.remove();
+  await ctx.service.user.create({
+    mobile: '13611388415',
+    password: '111111',
+    realName: '大宝贝子',
+  })
+}
+```
+
+# 11.实现鉴权
+
+npm i egg-jwt -S
+
+在plugin配置
+
+在config.default.js中配置
+
+```
+config.jwt = {
+  // 秘钥
+  secret: 'Great4-M',
+  enable: true, // default is false
+  // 表示只在/api开头的路由检查权限
+  match: /^\/api/, // optional
+}
+```
+
+**1.在service层创建actionToken.js实现注册token的业务逻辑**
+
+```
+const Service = require('egg').Service
+
+class ActionTokenService extends Service {
+  async apply(_id){
+    const {ctx}=this
+    // 实现注册token
+    return ctx.app.jwt.sign({
+      data:{
+        _id:_id
+      },
+      // 时间期限
+      exp:Math.floor(Date.now()/1000)+(60*60*24*7)
+    },ctx.app.config.jwt.secret)
+  }
+}
+module.exports = ActionTokenService
+```
+
+**2.在service层创建userAccess.js来实现登录的业务逻辑**
+
+ **登录逻辑：实现查找用户，比对密码，成功后，才生成token令牌（调用actionToken.js中apply方法）**
+
+```
+const { Service } = require('egg')
+class UserAccessService extends Service {
+    async login(payload) {
+        const { ctx, service } = this
+        const user= await service.user.findByMobile(payload.mobile)
+        console.log('88888mobile'+payload.moblie)
+        if (!user) {
+            ctx.throw(404, 'user not found')
+        }
+        let verifyPsw = await ctx.compare(payload.password, user.password)
+        if (!verifyPsw) {
+            ctx.throw(404, 'user password is error')
+        }
+        // 生成Token令牌
+        return { token: await service.actionToken.apply(user._id) }
+    }
+    async logout() {
+    }
+
+    async current() {
+        const { ctx, service } = this
+        // ctx.state.user 可以提取到JWT编码的data
+        const _id = ctx.state.user.data._id
+        const user = await service.user.find(_id)
+        if (!user) {
+            ctx.throw(404, 'user is not found')
+        }
+        user.password = 'How old are you?'
+        return user
+    }
+}
+
+module.exports = UserAccessService
+```
+
+**3.在controller下添加userAccess.js实现登录和退出的接口门户**
+
+调用的是service层中userAccess中的login和logout
+
+**4.在public中创建前端的测试代码**
+
+框架会自动读取public目录下的html页面
+
+并在其中设置token（见代码）
+
+
+
+测试:网址输入http://127.0.0.1:7003/public/index.html来测试
 
