@@ -98,9 +98,9 @@ module.exports = userController
 
 在model中建立user.js来定义集合和操作数据库
 
+#### 4.router.js
 
-
-
+书写路由规则
 
 # egg原理解析
 

@@ -1,3 +1,7 @@
+# egg-mongoose用法
+
+https://www.cnblogs.com/wxw1314/p/10339775.html
+
 # Mongodb
 
 ## 连接池native
@@ -202,7 +206,7 @@ const mongoose = require('mongose')
 
 mongoose.connect('mongodb:localhost:27017/test(数据库名)',{useNewUrlParser:true})
 
-constconn=mongoose.connection;
+const conn=mongoose.connection;
 conn.on("error",()=>console.error("连接数据库失败"));
 ```
 
@@ -237,11 +241,15 @@ console.log("插入数据:", r);
 
 ##### 4.查询
 
-```
+**注意，find查出来的是一个数组，findOne查出来的是单独的一个对象**
+
+```js
 //5.查询，find返回Query，它实现了then和catch，可以当Promise使用
 //如果需要返回Promise，调用其exec()
 r = await Model.find({ name: "苹果" });
 console.log("查询结果:", r);
+
+全局查询直接find({})
 ```
 
 ```
@@ -251,6 +259,29 @@ Course.findOne({name: 'node.js基础'}).then(result => console.log(result))
 ```
 
 ![mongodb查询文档](F:\图片\mongodb查询文档.png)
+
+注意这里sort默认是从小到大排序
+
+对MongoDB的查询文档进行排序，要使用`sort()`方法。`sort()`方法接受一个文档，其中包含的排序的字段，及要指定排序方式。**排序方式为可选值为：`1`和`-1`，`1`表示使用升序排列，`-1`表示降序排序。**
+
+`sort()`语法结构
+
+```
+db.COLLECTION_NAME.find().sort({KEY:1})
+```
+
+如：
+
+```js
+//按照views降序排列
+let sort = await ctx.model.Article.find()
+      .sort({ views: -1 })
+      .then((data) => {
+        console.log('排序', data)
+      })
+```
+
+
 
 ##### 5.更新
 
@@ -262,18 +293,31 @@ console.log("更新结果：", r);
 
 // 2.更新多个
 r = await Model.updateMany....
+
+//mongoose中
+Model.update({xxx},{$set:{xxx}})
 ```
 
 ##### 6.删除
 
-```
+```js
 // 7.删除，deleteOne返回Query
 // 1.删除单个
 r = await Model.deleteOne({ name: "苹果" });
 console.log("删除结果：", r);
 
 // 2.删除多个
-deleteMant
+deleteMany
+
+//根据id删除
+注意，如果是通过路径传递过来的ctx.params.id，这个id的类型是字符串类型的：
+r = await Model.deleteOne({"_id":ctx.params.id})
+
+mongoose中：
+//全部删除
+Model.remove({})
+//删除某个
+Model.remove({条件},function(err,data){})
 ```
 
 ##### 7.mongoose验证
@@ -322,7 +366,7 @@ const blogSchema = mongoose.Schema({
 
 2.使用populate方法进行关联集合查询
 
-```
+```js
 // 用户集合
 const User = mongoose.model('User', new mongoose.Schema({ name: { type: String } })); 
 // 文章集合
@@ -331,16 +375,18 @@ const Post = mongoose.model('Post', new mongoose.Schema({
     // 使用ID将文章集合和作者集合进行关联
     author: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
 }));
-//联合查询
+//联合查询，拿到某个文章的用户信息？
 Post.find()
       .populate('author')
       .then((err, result) => console.log(result));
 
 ```
 
+比如MyProject中：
 
+![mongoose1](F:\图片\mongoose1.png)
 
-
+![mongoose2](F:\图片\mongoose2.png)
 
 ## keystonejs
 
@@ -502,3 +548,4 @@ app.listen(post,()=>{
 最终效果
 
 在postman中任意操作数据，实现操纵数据库
+

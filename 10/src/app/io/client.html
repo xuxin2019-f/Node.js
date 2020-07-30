@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      const socket = io('http://localhost:3000')
+
+      socket.on('message', (message) => {
+        console.log('data from server: ' + message)
+      })
+      socket.on('disconnect', () => {
+        console.log('disconnect')
+      })
+      socket.on('serverEvent', (data) => {
+        console.log(data)
+        //在接收到服务端发送来的消息后，返回给服务端新的消息
+        socket.emit('clientEvent', 'clientMsgs')
+      })
+      socket.emit('clientBroadcast', 'prepare to broadcast')
+      socket.on('serverBroadcast', (data) => {
+        console.log(data)
+      })
+    </script>
+  </head>
+  <body>
+    123
+  </body>
+</html>

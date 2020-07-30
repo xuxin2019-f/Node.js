@@ -6,9 +6,15 @@
 
 # 2.创建Controller方法
 
+**添加swagger-doc**
+
 创建user.js
 
+**其中以注释的方法来配置接口和路由规则，这样就不需要在router.js中手动配置了，这需要导入插件swagger-doc**
+
 ```
+// app/controller/user.js
+
 const Controller = require('egg').Controller
 /**
  * @Controller 用户管理
@@ -32,7 +38,7 @@ class UserController extends Controller {
 }
 ```
 
-**其中以注释的方法来配置接口和路由规则，这需要导入插件**
+
 
 # 3.建立contract文件夹
 
@@ -295,6 +301,8 @@ async create(){
 > }
 
 # 8.创建模型层
+
+npm install egg-mongoose -S
 
 ## app文件夹下创建model文件夹
 

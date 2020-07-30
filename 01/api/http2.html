@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="">
+      <input type="text" name="" id="my" value="" placeholder="用户名" />
+      <input type="password" name="" id="pass" value="" placeholder="密码" />
+      <input type="button" name="" id="btn" value="提交" />
+    </form>
+  </body>
+  <script>
+    var my = document.querySelector('#my')
+    var pass = document.querySelector('#pass')
+    var btn = document.querySelector('#btn')
+    let xhr = new XMLHttpRequest()
+    btn.onclick = function () {
+      console.log(my.value, pass.value)
+      xhr.open('post', 'http://localhost:8000/info')
+      xhr.setRequestHeader('Content-Type', 'application/json')
+      xhr.send(JSON.stringify({ name: my.value, pass: pass.value }))
+      xhr.onload = function () {
+        console.log(xhr.responseText)
+      }
+    }
+  </script>
+</html>

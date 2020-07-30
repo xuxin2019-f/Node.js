@@ -2,6 +2,41 @@
 
 ## 区别
 
+express与kos的区别：https://juejin.im/post/5da6eef5f265da5b6b631115?from=bdhd_site
+
+**注意express是(req,res,next),koa是(ctx,next)**
+
+**在koa2中直接可以从ctx中获取url和method**
+
+```js
+app.use(async(ctx,next)=>{
+    //get获得表单页面
+    if(ctx.url==='/' && ctx.method==='GET'){
+        let html=`
+            <h1>Koa2 request POST</h1>
+            <form method="POST" action="/">
+                <p>userName</p>
+                <input name="userName" /><br/>
+                <p>age</p>
+                <input name="age" /><br/>
+                <button type="submit">submit</button>
+            </form>
+        `;
+        ctx.body=html;
+    }
+    //post提交表单信息
+    else if(ctx.url==='/' && ctx.method==='POST'){
+        let pastData=await parsePostData(ctx);
+        ctx.body=pastData;
+    }
+    else{
+        ctx.body='<h1>404!</h1>';
+    }
+ 
+});
+
+```
+
 Koa1是Express的下一代基于Node.js的web框架，是基于es6的generator/yield实现的
 
 Koa2完全使用Promise并配合async来实现异步
@@ -76,6 +111,44 @@ app.use((ctx,next)=>{
   }
 })
 ```
+
+### KOA中使用cookie和session
+
+```js
+router.get('/', async (ctx, next) => {
+  let name = new Buffer("狗子").toString('base64')
+  ctx.cookies.set("userInfo",name,{
+    maxAge:1000*60*60
+  })
+})
+
+router.get('/test', async (ctx, next) => {
+  //从ctx里面获取get传值,query是格式化之后的，querystring是字符串的
+  console.log(ctx.query)
+  let userInfo = ctx.cookies.get("userInfo");
+  let name = new Buffer(userInfo,'base64').toString()
+  console.log(name)
+  //ctx里面的request对象是那一大串东西
+  ctx.body = 'koa2 string'
+})
+```
+
+session是另一种记录客户状态的机制，不同的是cookie存储在客户短，session存储在服务器端。
+ session的运行机制：浏览器访问服务器并第一次发送请求时，服务器端会创建一个session对象，类似于key-value的结构，然后把key以cookie的形式存储在客户端，浏览器后续每次请求服务器时都会带上这个key（也就是cookie），服务器根据这个key来查找相应的value，也就是session。客户的信息都存储在session中
+
+```
+router.get('/buy', async (ctx, next)=> {
+  console.log(ctx.session.username) //读取session
+  ctx.body = 'this is a users response!'
+})
+
+router.get('/login', function (ctx, next) {
+  ctx.session.username="狗子"    //设置session
+  ctx.body = '登陆成功'
+})
+```
+
+
 
 ## Koa源码实现
 
