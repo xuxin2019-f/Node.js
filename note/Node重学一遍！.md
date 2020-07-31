@@ -517,7 +517,17 @@ console.log(Buffer.isBuffer(buf1))
 
 ###### 8.net
 
-提供了对TCP和socket的支持
+提供了对TCP的支持
+
+**http模块是构建在net模块之上的，http中收发的数据是通过net模块中的socket收发数据的，http会将收发的数据按照HTTP协议自动解析和包装：例如http模块自动将请求报文解析后挂载给req请求对象。**
+
+为什么既有net又有http：http知识一个基于net之上的模块，该模块遵循http协议。而又的业务功能使用的是别的协议。但是他们都是基于最基本的 Socket 网络编程模型而构建的
+
+**服务端：server = net.createServer+server.listen** 
+
+**客户端：client = new net.Socket() client.connect(....)**
+
+而http的客户端： http.request(....)
 
 - **实现TCP连接**
 
@@ -996,15 +1006,79 @@ httpServer.listen(3000, () => {
 
 ```
 
+##### 最大事件监听数
+
+ node中对于每个事件默认监听最大上限为10，也可以通过setMaxListeners进行设置
+
+```js
+const http = require('http')
+const httpServer = http.createServer()
+const events = require('events')
+//设置最大上限数
+httpServer.setMaxListeners(2)
+
+....
+
+//默认的最大监听数量
+console.log('max listeners num: ' + events.EventEmitter.defaultMaxListeners)
+
+//当对某个事件的监听器超过2，报警告：
+(node:20468) MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 3 request listeners added to [Server]. Use emitter.setMaxListeners() to increase limit
+```
+
+##### 自定义事件
+
+ 和socketio中的emit和on相同。自定义事件emit发射事件，on监听事件。on必须写在emit之前，否则导致事件发射出去的时候node还没有监听该事件，导致发射事件行为丢失。
+
+```js
+//自定义事件
+httpServer.on('myEvents', (params1, params2) => {
+  console.log('myEvents: ' + params1 + ' ' + params2)
+})
+httpServer.emit('myEvents', 'hello', 'hi')
 
 
-### Node异步IO模型
+//监听事件是否增加新的监听：newListener
+emitter.once('newListener', (event, listener) => {
+  //当监听到是该事件时，再次监听
+  if (event === 'myEvent') {
+    emitter.on('myEvent', () => {
+      console.log('hi')
+    })
+  }
+})
+emitter.on('myEvent', () => {
+  console.log('xx')
+})
+emitter.emit('myEvent')// hi xx
+```
+
+
+
+### ！Node底层事件模型与异步IO模型
+
+***node的高性能是完整事件循环机制+底层的操作系统异步IO调用+线程池（底层库实现或由操作系统提供）相结合的结果。***首先主线程执行到异步事件，转发给底层操作系统进行IO调用，调用线程池里的空线程执行操作，当执行完毕，通知事件循环某事件执行完毕了，可以执行相应的回调。
+
+ node的执行是异步非阻塞的，当执行时遇到一个异步事件，将其转发给操作系统内核来执行，node在其执行的过程中不会等待，而是立即向下执行，遇到异步事件再进行转发。在操作系统内核中，哪个异步事件先执行完，就先触发哪个异步事件的回调。
+
+ 由于这种特性，node中不要存在下一个异步函数基于上一个异步函数的结果，因为不保证哪个回调先执行，除非写嵌套。
+
+  **事件循环机制：**
+
+1. 循环开始，查看是否有待处理的事件，如果没有回到循环开始
+2. 如果有，从事件队列中取出一个事件
+3. 判断这个事件有没有对应的事件监听器，即回调
+4. 如果没有，回到循环开始
+5. 如果有，执行回调
+6. 回到循环开始，开始新一轮的事件检测
 
 ### Node单线程模型
 
-### Node模块
+  **node所谓的单线程指的是其逻辑执行的主线程是单线程的，即js代码运行环境是单线程的，因为js本身只能执行在单线程中。**而当node执行过程中遇到异步事件，会调用底层操作系统来执行IO调用，并结合**线程池**中的空闲线程来完成事件操作。
 
+### Node引入第三方模块机制
 
+  node -> 调用某个第三方模块(通常依赖于node原生模块) -> 调用原生模块 -> 原生模块的实现 -> 调用底层C++模块 -> libuv/IOCP -> 线程池选取可用线程执行底层IO操作
 
 
 

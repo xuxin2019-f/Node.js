@@ -201,22 +201,27 @@ const Schema = mongoose.Schema({
 
 ##### 1.连接
 
-```
+```js
 const mongoose = require('mongose')
 
-mongoose.connect('mongodb:localhost:27017/test(数据库名)',{useNewUrlParser:true})
+mongoose.connect('mongodb://localhost:27017/test(数据库名)',{useNewUrlParser:true},error=>{
+    if(error){
+        console.log(error)
+        throw error
+    }else{
+        console.log('connection successful')
+    }
+})
 
-const conn=mongoose.connection;
-conn.on("error",()=>console.error("连接数据库失败"));
 ```
 
 ##### 2.创建集合
 
 创建集合分为两步，一是对**对集合设定规则**，二是**创建集合**，创建mongoose.Schema构造函数的实例即可创建集合
 
-```
+```js
 // 定义集合规则
-const Schema = mongoose.Schema({
+const Schema = new mongoose.Schema({
  category:String,
  name:String
 })
