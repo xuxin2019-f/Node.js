@@ -1072,6 +1072,181 @@ emitter.emit('myEvent')// hi xx
 5. 如果有，执行回调
 6. 回到循环开始，开始新一轮的事件检测
 
+### Node进程详解
+
+ 注意看官方文档
+
+ `process` 对象是一个全局变量，提供了有关当前 Node.js 进程的信息并对其进行控制。 作为全局变量，它始终可供 Node.js 应用程序使用，无需使用 `require()`。 它也可以使用 `require()` 显式地访问：
+
+```js
+const process = require('process');
+```
+
+**一些属性：**
+
+```js
+//node版本号
+console.log(process.version)
+//node及node的一些依赖的版本号
+console.log(process.versions)
+//平台
+console.log(process.platform)
+//node的绝对路径
+console.log(process.execPath)
+//node配置信息
+console.log(process.config)
+//当前正在执行的node进程的数值 重要，一些监听进程的第三方工具需要监听这个pid来获取信息、重启进程
+console.log(process.pid)
+//系统架构
+console.log(process.arch)
+//内存使用情况，被大量第三方工具使用
+console.log(process.memoryUsage())
+//当前运行的目录
+console.log(process.cwd())
+//改变当前工作目录 这个不返回结果
+// process.chdir('../')
+// console.log(process.cwd())
+
+//环境属性 在很多第三方工具中都会被使用
+//比如给process.env添加一个变量，赋予其生产或开发的字符串供第三方识别来进行不同的操作:
+//process.env.NODE_ENV = 'dev' / process.env.NODE_ENV = 'pro'
+console.log(process.env)
+```
+
+**由于process继承自EventEmitter，因此监听了许多事件：**
+
+```js
+//退出
+process.on('beforeExit', (code) => {
+  console.log(`node process beforeExit: ${code}`)
+})
+process.on('exit', (code) => {
+  console.log(`node process exit: ${code}`)
+})
+
+// process.exit(0)
+
+//异常捕获 在node中如果某个错误一直没被捕获，就会冒泡到主线程导致主线程的瘫痪
+process.on('uncaughtException', (err) => {
+  if (err) {
+    console.log(err)
+    console.log('====')
+    console.log('uncaughtException occured')
+  }
+})
+//故意引发错误
+a
+```
+
+ 注意：
+
+如果打算使用 `'uncaughtException'` 事件作为异常处理的最后补救机制，这是非常粗糙的设计方式。 此事件不应该当作 `On Error Resume Next`（出了错误就恢复让它继续）的等价机制。 **未处理异常本身就意味着应用已经处于了未定义的状态。如果基于这种状态，尝试恢复应用正常进行，可能会造成未知或不可预测的问题。**
+
+此**事件的监听器回调函数中抛出的异常，不会被捕获。为了避免出现无限循环的情况，进程会以非零的状态码结束，并打印堆栈信息。**
+
+如果在出现未捕获异常时，尝试去恢复应用，可能出现的结果与电脑升级时拔掉电源线出现的结果类似。 10次中有9次不会出现问题。 但是第10次可能系统会出现错误。
+
+正确使用 `'uncaughtException'` 事件的方式，是用它在进程结束前执行一些已分配资源（比如文件描述符，句柄等等）的同步清理操作。 触发 `'uncaughtException'` 事件后，用它来尝试恢复应用正常运行的操作是不安全的。
+
+想让一个已经崩溃的应用正常运行，更可靠的方式应该是启动另外一个进程来监测/探测应用是否出错， 无论 `uncaughtException` 事件是否被触发，如果监测到应用出错，则恢复或重启应用。
+
+
+
+```js
+// process.nextTick(callback,[...args])
+//process.nextTick() 方法将 callback 添加到下一个时间点的队列。 在 JavaScript 堆栈上的当前操作运行完成之后以及允许事件循环继续之前，此队列会被完全耗尽。 即同步之后异步之前。
+ const fs = require('fs')
+const handle = () => {
+  console.log('this is handle')
+}
+process.nextTick(handle)
+console.log(fs.readFileSync('./app.js', 'utf8'))
+setTimeout(() => {
+  console.log('异步事件')
+}, 0)
+//读取文件的内容
+//this is handle
+//异步事件
+```
+
+####  node子进程
+
+​    适用于密集cpu计算的场景。
+
+**第一种方法：通过spawn生成**
+
+  第一个参数可以是任何命令。**spawn没有回调。**
+
+```js
+//childProcess/app1.js
+const { spawn } = require('child_process')
+const lsChildProcess = spawn('node', ['../app.js'])
+lsChildProcess.stdout.on('data', (data) => {
+  console.log(data.toString())
+  console.log(`child process id: ${lsChildProcess.pid}`)
+})
+lsChildProcess.on('error', (err) => {
+  console.log('err', err)
+})
+lsChildProcess.on('exit', (code, signal) => {
+  console.log(code)
+})
+//app2.js
+const { spawn } = require('child_process')
+const nodeChildProcess = spawn('node', ['app1.js'])
+nodeChildProcess.stdout.on('data', (data) => {
+  console.log(data.toString())
+  console.log(`child2 process id: ${nodeChildProcess.pid}`)
+})
+//此时app2内的nodeChildProcess作为一个子进程，内部还有一个lsChildProcess子进程
+```
+
+**第二种方法：fork，一种特殊的spawn方法，只用于产生node的子进程。该模块已建立了 IPC 通信通道，可以在父进程与子进程之间发送消息。**
+
+由于默认子主进程的打印结果会放在一个控制台上，造成混乱，设置silent为true，只显示父进程的打印结果。如果要调试子进程，在test.js中的console.log(message)处打断点，然后debug app3，发现跳转到test的断点处，手动往下执行，在vscode的调试控制台处能看到完整打印。
+
+```js
+//app3.js
+const { fork } = require('child_process')
+//待执行的子进程地址 参数 可选参数
+const forkProcess = fork('./test', { silent: true })
+//主、子进程的通信
+// 发送消息来的监听
+forkProcess.on('message', (message) => {
+  console.log(message)
+})
+// 发送消息
+forkProcess.send('hello')
+
+
+//test.js
+[1, 2, 3, 4, 5].forEach((element) => {
+  console.log(element)
+})
+process.on('message', (message) => {
+  console.log(message)
+  process.send('welcome')
+})
+
+```
+
+**第三种方法：exec(command,[options],[callback]）**
+
+注意command要包含命令和待执行命令的模块，**并且exec有回调**。
+
+```js
+const { exec } = require('child_process')
+exec('node test', (err, stdout, stderr) => {
+  if (err) {
+    console.log(err)
+  } else {
+    console.log(stdout.toString())
+  }
+})
+```
+
+**第四种方法：execFile。与exec不同，不会衍生shell。**
+
 ### Node单线程模型
 
   **node所谓的单线程指的是其逻辑执行的主线程是单线程的，即js代码运行环境是单线程的，因为js本身只能执行在单线程中。**而当node执行过程中遇到异步事件，会调用底层操作系统来执行IO调用，并结合**线程池**中的空闲线程来完成事件操作。
@@ -1079,6 +1254,141 @@ emitter.emit('myEvent')// hi xx
 ### Node引入第三方模块机制
 
   node -> 调用某个第三方模块(通常依赖于node原生模块) -> 调用原生模块 -> 原生模块的实现 -> 调用底层C++模块 -> libuv/IOCP -> 线程池选取可用线程执行底层IO操作
+
+### ！Node实现通信
+
+1. http服务端和客户端
+
+req/res.on('data')接收，服务端res.end()发送，客户端get方法通过地址path发送
+
+```js
+// 服务端
+const server = http.createServer((req,res)=>{
+    let reqData = ''
+    //接收消息
+    req.on('data',data=>{
+        reqData += data
+    })
+    req.on('end',()=>{
+        resData = xxxx
+        //发送数据
+        req.end(resData)
+    })
+})
+
+//客户端
+const client = http.request({
+    host:'localhost',
+    port:'9093',
+    method:'get',
+    //发送参数
+    path:'/login?username=xx&password=123'
+},(res)=>{
+    res.on('data',data=>{
+        resData += data
+    })
+    res.on('end',()=>{
+        xxxxx
+    })
+}).end()
+```
+
+2. tcp服务端和客户端
+
+通过socket/client.on('data')接收，通过socket/client.write发送
+
+```js
+//服务端
+const server = net.createServer(socket=>{
+    const message = xxxxx
+    //发送
+    socket.write(message,()=>{
+        xxxx
+    })
+    //接收
+    socket.on('data',data=>{
+        xxxxx
+    })
+})
+
+//客户端
+const client = new net.Socket()
+client.connect(port,host,()=>{
+    //发送
+    client.write(xxx)
+})
+//接收
+client.on('data',data=>{
+    xxxx
+    //发送
+    client.write('xxxx')
+})
+```
+
+3. 通过sockets
+
+```js
+//服务端
+const server = http.createServer(....)
+const socket = io.listen(server)
+socket.on('connection',(socket)=>{
+    //1.原生事件
+    //接收数据
+    socket.on('message',message=>{
+        xxxx
+    })
+    socket.on('disconnection',()=>{
+        xxxx
+    })
+    //发送数据
+    socket.send(xxx)
+    
+    //2.自定义接收和发送
+    //接收
+    socket.on('clientEvent',(data)=>{
+        xxxx
+    })
+    //发送
+    socket.emit('ServerEvent',发送的内容)
+})
+
+//客户端
+const socket = io(地址)
+//接收
+socket.on('ServerEvent',(data)=>{
+    xxxx
+    //发送
+    socket.emit('clientEvent',发送的内容)
+})
+```
+
+   4.进程间的通信
+
+通过child_process的fork进行通信：on('message')+send
+
+```js
+//父进程
+const { fork } = require('child_process')
+//待执行的子进程地址 参数 可选参数
+const forkProcess = fork('./test', { silent: true })
+//主、子进程的通信
+// 发送消息来的监听
+forkProcess.on('message', (message) => {
+  console.log(message)
+})
+// 发送消息
+forkProcess.send('hello')
+
+//子进程
+;[1, 2, 3, 4, 5].forEach((element) => {
+  console.log(element)
+})
+process.on('message', (message) => {
+  console.log(message)
+  process.send('welcome')
+})
+
+```
 
 
 
