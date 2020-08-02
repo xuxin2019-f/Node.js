@@ -43,7 +43,7 @@ Koa2完全使用Promise并配合async来实现异步
 
 ## 使用
 
-```
+```js
 const Koa = require('koa')
 const app = new Koa()
 app.use((context,next)=>{

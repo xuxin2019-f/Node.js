@@ -32,9 +32,12 @@ a.method2(callback(result){
 
 
 
-**node开发场景：**
+### **node开发场景：**
 
-​     作为前后端中间的中间层做一些逻辑和转发
+有另外的服务端做逻辑处理，而node作为前后端中间的中间层:
+
+         1. 对请求做预处理
+            2. 做一些简单的业务处理：如登陆业务存储session，这样就保证转发到后端的请求一定是已经登陆的用户
 
 ### nvm配置和重要命令解读
 
@@ -1247,6 +1250,69 @@ exec('node test', (err, stdout, stderr) => {
 
 **第四种方法：execFile。与exec不同，不会衍生shell。**
 
+#### Cluster集群
+
+ **单个 Node.js 实例运行在单个线程中。 为了充分利用多核系统，有时需要启用一组 Node.js 进程去处理负载任务。**
+
+**`cluster` 模块可以创建共享服务器端口的子进程。**
+
+ **工作进程由 [`child_process.fork()`](http://nodejs.cn/s/VDCJMa) 方法创建，因此它们可以使用 IPC 和父进程通信，从而使各进程交替处理连接服务。因此cluster中通过cluster.fork创建子进程。**
+
+**cluster 模块支持两种分发连接的方法。**
+
+**第一种方法**（也是除 Windows 外所有平台的默认方法）是循环法，由主进程负责监听端口，接收新连接后再将连接循环分发给工作进程，在分发中使用了一些内置技巧防止工作进程任务过载。
+
+**第二种方法是**，主进程创建监听 socket 后发送给感兴趣的工作进程，由工作进程负责直接接收连接。
+
+ cluster改变了主进程做请求处理的模式，而是将主进程改为转发请求给子进程的模式，主进程和子进程是双向通信的，使用Master主进程和Worker子进程最大利用多核处理能力。
+
+```js
+// 要求：根据cpu核心数来分配进程数
+const cluster = require('cluster')
+const http = require('http')
+const os = require('os')
+
+// 查询cpu核心数 是8 因此这里分配8个子进程
+const cpuCount = os.cpus().length
+//console.log(cpuCount)
+
+// isMaster判断是否是父进程 isWorker判断是否是子进程
+if (cluster.isMaster) {
+  console.log('father')
+  //如果是父进程，则创建子进程
+  for (let i = 0; i < cpuCount; i++) {
+    cluster.fork()
+  }
+  //每次创建
+  cluster.on('exit', (worker, code, signal) => {
+    // worker指创建出来的进程
+    console.log(worker.process.pid)
+  })
+} else {
+  //子进程fork出来后会重新执行程序，因此这里要有判断
+  // 由子进程创建http服务器
+  const httpServer = http.createServer((req, res) => {
+    let data = ''
+    req.on('data', (chunk) => {
+      data += chunk
+    })
+    req.on('end', () => {
+      res.writeHead(200, {
+        'Content-Type': 'text/plain',
+      })
+      res.end(`${process.pid}`)
+    })
+  })
+  //请求先到达的是主进程，因此这个3000是主进程监听的，再由主进程转发请求给某个子进程
+  httpServer.listen(3000, () => {
+    console.log(`child:${process.pid}`)
+  })
+}
+
+```
+
+
+
 ### Node单线程模型
 
   **node所谓的单线程指的是其逻辑执行的主线程是单线程的，即js代码运行环境是单线程的，因为js本身只能执行在单线程中。**而当node执行过程中遇到异步事件，会调用底层操作系统来执行IO调用，并结合**线程池**中的空闲线程来完成事件操作。
@@ -1392,6 +1458,80 @@ process.on('message', (message) => {
 
 
 
-### express和KOA功能详解
+### KOA功能详解
 
   express所有的功能都继承在express的包中，而KOA是将大部分功能移到第三方插件，使得自己本身的功能精炼小巧。
+
+  **KOA的ctx上下文环境封装了request和response，这里的request和response并不是node原生的请求和响应，而是在此基础上封装后的。**
+
+```js
+ app.use((ctx,next)=>{
+     //ctx.request.url  = ctx.url
+     //ctx.response.body = ctx.body
+ })
+```
+
+ **如果要拿到node原生的请求和响应，通过ctx.req和ctx.resp获取（不建议）。**
+
+####  ！中间件
+
+每一个app.use后都是一个中间件，这个中间件可以是第三方或是自定义的。
+
+1. **koa的洋葱模型**
+
+从外向里执行，每一次遇到await next()后执行下一个中间件，都执行完毕后再层层向外执行。
+
+```js
+const Koa = require('koa')
+const app = new Koa()
+
+app.use(async (ctx, next) => {
+  console.log('one start')
+  await next()
+  console.log('one finish')
+})
+app.use(async (ctx, next) => {
+  ctx.body = 'hello world'
+  console.log('two start')
+  await next()
+  console.log('two finish')
+})
+app.use(async (ctx, next) => {
+  console.log('three start')
+  await next()
+  console.log('three finish')
+})
+app.listen(3000, () => {
+  console.log('ok')
+})
+
+//打印
+one start
+two start
+three start
+three finish
+two finish
+one finish
+one start
+two start
+three start
+three finish
+two finish
+one finish
+```
+
+#### 完整开发
+
+1.由于node是中间层，所以config文件夹下建立client处理node转发请求给真正的服务端时，node作为客户端的处理；还建立server处理客户端请求给node时，node作为服务端的处理。实际开发中，这两个模块内的地址是不一样的，比如login实际开发中client和server里地址不相同。
+
+在写完两个配置json文件后，还需要第三方插件的帮助来解析json。
+
+2.app文件夹存放主入口文件app.js。在主入口文件需要引入以下中间件：
+
+-  @koa/router
+-  koa-bodyparser
+-  koa-static
+-  koa-compress做请求体压缩
+-  koa-combine-routers 合并多个路由
+-  axios 这里的用处是用于node服务层向后端发请求
+-  jsonfile 解析json配置文件
